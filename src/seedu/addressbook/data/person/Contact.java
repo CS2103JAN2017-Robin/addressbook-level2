@@ -9,10 +9,6 @@ public class Contact {
     public String value;
     protected boolean isPrivate;
     
-    public Contact() {
-        super();
-    }
-    
     @Override
     public String toString() {
         return value;
