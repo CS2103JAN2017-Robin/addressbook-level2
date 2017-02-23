@@ -36,7 +36,6 @@ public class Email extends Contact {
         return test.matches(EMAIL_VALIDATION_REGEX);
     }
 
-    @Override
 
     @Override
     public boolean equals(Object other) {
