@@ -3,7 +3,9 @@ package seedu.addressbook.data.person;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Represents a Person's name in the address book.
@@ -51,7 +53,10 @@ public class Name {
          if (other == null) {
              return false;
          }
-         return true;
+         List<String> wordsInThisName = getWordsInName().stream().map(String::toUpperCase).collect(Collectors.toList());
+         List<String> wordsInOtherName = other.getWordsInName().stream().map(String::toUpperCase).collect(Collectors.toList());
+         
+         return wordsInOtherName.containsAll(wordsInThisName) || wordsInThisName.containsAll(wordsInOtherName);
      }
 
     @Override
