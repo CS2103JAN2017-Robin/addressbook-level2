@@ -13,6 +13,8 @@ public class UtilsTest {
     public void isAnyNull() {
         // empty list
         assertFalse(Utils.isAnyNull());
+        // empty array
+        assertFalse(Utils.isAnyNull(new Object[] {}));
 
         // Any non-empty list
         assertFalse(Utils.isAnyNull(new Object(), new Object()));
@@ -51,6 +53,8 @@ public class UtilsTest {
         // all objects unique
         assertAreUnique("abc", "ab", "a");
         assertAreUnique(1, 2);
+        assertAreUnique("abc ", "abc");
+        assertAreUnique("", "\0");
 
         // some identical objects
         assertNotUnique("abc", "abc");
@@ -60,6 +64,7 @@ public class UtilsTest {
         assertNotUnique(null, 1, new Integer(1));
         assertNotUnique(null, null);
         assertNotUnique(null, "a", "b", null);
+        assertNotUnique("", "\n", "\0", "\t", "");
     }
 
     private void assertAreUnique(Object... objects) {
